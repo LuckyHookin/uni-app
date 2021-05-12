@@ -259,6 +259,7 @@ export default /*#__PURE__*/ defineComponent({
             >
               <ResizeSensor
                 initial
+                // @ts-ignore
                 onResize={({ height }: { height: number }) =>
                   (indicatorHeight.value = height)
                 }

@@ -137,6 +137,7 @@ export default /*#__PURE__*/ defineComponent({
         <uni-picker-view ref={rootRef}>
           <ResizeSensor
             initial
+            // @ts-ignore
             onResize={({ height }: { height: number }) =>
               (state.height = height)
             }

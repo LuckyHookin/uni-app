@@ -1,6 +1,6 @@
 import {isFunction, extend, hyphenate, isPlainObject, isString, isArray, hasOwn, isObject, capitalize, toRawType, makeMap as makeMap$1, isPromise, invokeArrayFns as invokeArrayFns$1} from "@vue/shared";
-import {injectHook, withModifiers, createVNode, getCurrentInstance, inject, provide, reactive, computed, nextTick, onBeforeMount, onMounted, onBeforeActivate, onBeforeDeactivate, openBlock, createBlock, mergeProps, toDisplayString, ref, defineComponent, watch, onActivated, resolveComponent, toHandlers, renderSlot, onUnmounted, onBeforeUnmount, withDirectives, vShow, markRaw, isVNode, Fragment, createCommentVNode, createTextVNode, shallowRef, watchEffect, renderList, onDeactivated, Teleport, createApp, Transition, withCtx, KeepAlive, resolveDynamicComponent} from "vue";
-import {once, passive, normalizeTarget, isBuiltInComponent, invokeArrayFns, NAVBAR_HEIGHT, parseQuery, PRIMARY_COLOR, removeLeadingSlash, getLen, ON_REACH_BOTTOM_DISTANCE, decodedQuery, debounce, updateElementStyle, addFont, scrollTo} from "@dcloudio/uni-shared";
+import {injectHook, withModifiers, createVNode, getCurrentInstance, inject, provide, reactive, computed, nextTick, onBeforeMount, onMounted, onBeforeActivate, onBeforeDeactivate, openBlock, createBlock, mergeProps, toDisplayString, ref, defineComponent, watch, onActivated, resolveComponent, toHandlers, renderSlot, onUnmounted, onBeforeUnmount, withDirectives, vShow, isVNode, Fragment, markRaw, createCommentVNode, createTextVNode, shallowRef, watchEffect, renderList, onDeactivated, Teleport, createApp, Transition, withCtx, KeepAlive, resolveDynamicComponent} from "vue";
+import {once, passive, normalizeTarget, isBuiltInComponent, invokeArrayFns, NAVBAR_HEIGHT, parseQuery, PRIMARY_COLOR, removeLeadingSlash, getLen, ON_REACH_BOTTOM_DISTANCE, decodedQuery, debounce, updateElementStyle, addFont, scrollTo, formatDateTime} from "@dcloudio/uni-shared";
 import {initVueI18n, LOCALE_EN, LOCALE_ES, LOCALE_FR, LOCALE_ZH_HANS, LOCALE_ZH_HANT} from "@dcloudio/uni-i18n";
 import {useRoute, createRouter, createWebHistory, createWebHashHistory, useRouter, isNavigationFailure, RouterView} from "vue-router";
 function applyOptions(options, instance2, publicThis) {
@@ -132,6 +132,24 @@ const initI18nShowModalMsgsOnce = /* @__PURE__ */ once(() => {
   }
   if (__UNI_FEATURE_I18N_ZH_HANT__) {
     i18n.add(LOCALE_ZH_HANT, normalizeMessages(name, {cancel: "\u53D6\u6D88", confirm: "\u78BA\u5B9A"}));
+  }
+});
+const initI18nPickerMsgsOnce = /* @__PURE__ */ once(() => {
+  const name = "uni.picker.";
+  if (__UNI_FEATURE_I18N_EN__) {
+    i18n.add(LOCALE_EN, normalizeMessages(name, {done: "Done", cancel: "Cancel"}));
+  }
+  if (__UNI_FEATURE_I18N_ES__) {
+    i18n.add(LOCALE_ES, normalizeMessages(name, {done: "OK", cancel: "Cancelar"}));
+  }
+  if (__UNI_FEATURE_I18N_FR__) {
+    i18n.add(LOCALE_FR, normalizeMessages(name, {done: "OK", cancel: "Annuler"}));
+  }
+  if (__UNI_FEATURE_I18N_ZH_HANS__) {
+    i18n.add(LOCALE_ZH_HANS, normalizeMessages(name, {done: "\u5B8C\u6210", cancel: "\u53D6\u6D88"}));
+  }
+  if (__UNI_FEATURE_I18N_ZH_HANT__) {
+    i18n.add(LOCALE_ZH_HANT, normalizeMessages(name, {done: "\u5B8C\u6210", cancel: "\u53D6\u6D88"}));
   }
 });
 const initI18nVideoMsgsOnce = /* @__PURE__ */ once(() => {
@@ -449,7 +467,7 @@ var safeAreaInsets = {
   onChange,
   offChange
 };
-var out = safeAreaInsets;
+var D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out = safeAreaInsets;
 const onEventPrevent = /* @__PURE__ */ withModifiers(() => {
 }, ["prevent"]);
 const onEventStop = /* @__PURE__ */ withModifiers(() => {
@@ -461,10 +479,10 @@ function getWindowOffset() {
   const left = parseInt(style.getPropertyValue("--window-left"));
   const right = parseInt(style.getPropertyValue("--window-right"));
   return {
-    top: top ? top + out.top : 0,
-    bottom: bottom ? bottom + out.bottom : 0,
-    left: left ? left + out.left : 0,
-    right: right ? right + out.right : 0
+    top: top ? top + D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.top : 0,
+    bottom: bottom ? bottom + D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.bottom : 0,
+    left: left ? left + D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.left : 0,
+    right: right ? right + D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.right : 0
   };
 }
 function updateCssVar(cssVars) {
@@ -1148,7 +1166,7 @@ function normalizePageMeta(pageMeta) {
       let offset = rpx2px(refreshOptions.offset);
       const {type} = navigationBar;
       if (type !== "transparent" && type !== "none") {
-        offset += NAVBAR_HEIGHT + out.top;
+        offset += NAVBAR_HEIGHT + D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.top;
       }
       refreshOptions.offset = offset;
       refreshOptions.height = rpx2px(refreshOptions.height);
@@ -4682,7 +4700,7 @@ function initHistory() {
   });
   return history2;
 }
-var index$o = {
+var index$l = {
   install(app) {
     initApp$1(app);
     initView(app);
@@ -4867,7 +4885,7 @@ function throttle(fn, wait) {
   };
   return newFn;
 }
-const _sfc_main$7 = {
+const _sfc_main$8 = {
   name: "Audio",
   mixins: [subscriber],
   props: {
@@ -4992,7 +5010,7 @@ const _hoisted_3$2 = {class: "uni-audio-time"};
 const _hoisted_4$2 = {class: "uni-audio-info"};
 const _hoisted_5$1 = {class: "uni-audio-name"};
 const _hoisted_6$1 = {class: "uni-audio-author"};
-function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("uni-audio", mergeProps({
     id: $props.id,
     controls: !!$props.controls
@@ -5022,7 +5040,7 @@ function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     ])
   ], 16, ["id", "controls"]);
 }
-_sfc_main$7.render = _sfc_render$7;
+_sfc_main$8.render = _sfc_render$8;
 const hoverProps = {
   hoverClass: {
     type: String,
@@ -5106,8 +5124,8 @@ function useBooleanAttr(props2, keys) {
     return res;
   }, Object.create(null));
 }
-const uniFormKey = PolySymbol(process.env.NODE_ENV !== "production" ? "uniForm" : "uf");
-var index$n = /* @__PURE__ */ defineComponent({
+const uniFormKey$1 = PolySymbol(process.env.NODE_ENV !== "production" ? "uniForm" : "uf");
+var Form = /* @__PURE__ */ defineComponent({
   name: "Form",
   setup(_props, {
     slots,
@@ -5118,18 +5136,18 @@ var index$n = /* @__PURE__ */ defineComponent({
   }
 });
 function provideForm(emit2) {
-  const fields = [];
-  provide(uniFormKey, {
+  const fields2 = [];
+  provide(uniFormKey$1, {
     addField(field) {
-      fields.push(field);
+      fields2.push(field);
     },
     removeField(field) {
-      fields.splice(fields.indexOf(field), 1);
+      fields2.splice(fields2.indexOf(field), 1);
     },
     submit() {
       emit2("submit", {
         detail: {
-          value: fields.reduce((res, field) => {
+          value: fields2.reduce((res, field) => {
             if (field.submit) {
               const [name, value] = field.submit();
               name && (res[name] = value);
@@ -5140,13 +5158,13 @@ function provideForm(emit2) {
       });
     },
     reset() {
-      fields.forEach((field) => field.reset && field.reset());
+      fields2.forEach((field) => field.reset && field.reset());
       emit2("reset");
     }
   });
-  return fields;
+  return fields2;
 }
-var index$m = /* @__PURE__ */ defineComponent({
+var index$k = /* @__PURE__ */ defineComponent({
   name: "Button",
   props: {
     id: {
@@ -5185,7 +5203,7 @@ var index$m = /* @__PURE__ */ defineComponent({
   setup(props2, {
     slots
   }) {
-    const uniForm = inject(uniFormKey, false);
+    const uniForm = inject(uniFormKey$1, false);
     const {
       hovering,
       binding
@@ -5475,7 +5493,7 @@ function getTempCanvas(width = 0, height = 0) {
   tempCanvas.height = height;
   return tempCanvas;
 }
-var _sfc_main$6 = {
+var _sfc_main$7 = {
   name: "Canvas",
   inheritAttrs: false,
   components: {
@@ -5937,7 +5955,7 @@ const _hoisted_1$5 = {
   height: "150"
 };
 const _hoisted_2$2 = {style: {"position": "absolute", "top": "0", "left": "0", "width": "100%", "height": "100%", "overflow": "hidden"}};
-function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_ResizeSensor = resolveComponent("ResizeSensor");
   return openBlock(), createBlock("uni-canvas", mergeProps({
     "canvas-id": $props.canvasId,
@@ -5953,7 +5971,7 @@ function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 8, ["onResize"])
   ], 16, ["canvas-id", "disable-scroll"]);
 }
-_sfc_main$6.render = _sfc_render$6;
+_sfc_main$7.render = _sfc_render$7;
 function useListeners(props2, listeners) {
   _addListeners(props2.id, listeners);
   watch(() => props2.id, (newId, oldId) => {
@@ -6015,7 +6033,7 @@ const props$t = {
     default: ""
   }
 };
-var index$l = /* @__PURE__ */ defineComponent({
+var index$j = /* @__PURE__ */ defineComponent({
   name: "CheckboxGroup",
   props: props$t,
   emits: ["change"],
@@ -6034,8 +6052,8 @@ var index$l = /* @__PURE__ */ defineComponent({
   }
 });
 function useProvideCheckGroup(props2, trigger) {
-  const fields = [];
-  const getFieldsValue = () => fields.reduce((res, field) => {
+  const fields2 = [];
+  const getFieldsValue = () => fields2.reduce((res, field) => {
     if (field.value.checkboxChecked) {
       res.push(field.value.value);
     }
@@ -6043,10 +6061,10 @@ function useProvideCheckGroup(props2, trigger) {
   }, new Array());
   provide(uniCheckGroupKey, {
     addField(field) {
-      fields.push(field);
+      fields2.push(field);
     },
     removeField(field) {
-      fields.splice(fields.indexOf(field), 1);
+      fields2.splice(fields2.indexOf(field), 1);
     },
     checkboxChange($event) {
       trigger("change", $event, {
@@ -6054,7 +6072,7 @@ function useProvideCheckGroup(props2, trigger) {
       });
     }
   });
-  const uniForm = inject(uniFormKey, false);
+  const uniForm = inject(uniFormKey$1, false);
   if (uniForm) {
     uniForm.addField({
       submit: () => {
@@ -6076,7 +6094,7 @@ const props$s = {
     default: ""
   }
 };
-var index$k = /* @__PURE__ */ defineComponent({
+var index$i = /* @__PURE__ */ defineComponent({
   name: "Label",
   props: props$s,
   setup(props2, {
@@ -6145,7 +6163,7 @@ const props$r = {
     default: ""
   }
 };
-var index$j = /* @__PURE__ */ defineComponent({
+var index$h = /* @__PURE__ */ defineComponent({
   name: "Checkbox",
   props: props$r,
   setup(props2, {
@@ -6208,7 +6226,7 @@ function useCheckboxInject(checkboxChecked, checkboxValue, reset) {
   if (!!uniCheckGroup) {
     uniCheckGroup.addField(field);
   }
-  const uniForm = inject(uniFormKey, false);
+  const uniForm = inject(uniFormKey$1, false);
   if (!!uniForm) {
     uniForm.addField(formField);
   }
@@ -6996,7 +7014,7 @@ const props$p = /* @__PURE__ */ Object.assign({}, props$q, {
     default: false
   }
 });
-var index$i = /* @__PURE__ */ defineComponent({
+var index$g = /* @__PURE__ */ defineComponent({
   name: "Editor",
   props: props$p,
   emit: ["ready", "focus", "blur", "input", "statuschange", ...emit$1],
@@ -7058,7 +7076,7 @@ const ICONS = {
     c: GREY_COLOR
   }
 };
-var index$h = /* @__PURE__ */ defineComponent({
+var index$f = /* @__PURE__ */ defineComponent({
   name: "Icon",
   props: {
     type: {
@@ -7122,7 +7140,7 @@ const IMAGE_MODES = {
   "bottom left": ["left bottom"],
   "bottom right": ["right bottom"]
 };
-var index$g = /* @__PURE__ */ defineComponent({
+var index$e = /* @__PURE__ */ defineComponent({
   name: "Image",
   props: props$o,
   setup(props2, {
@@ -7140,7 +7158,7 @@ var index$g = /* @__PURE__ */ defineComponent({
     });
     return () => {
       const {
-        mode
+        mode: mode2
       } = props2;
       const {
         imgSrc,
@@ -7153,7 +7171,7 @@ var index$g = /* @__PURE__ */ defineComponent({
       }, null, 4), imgSrc ? createVNode("img", {
         "src": imgSrc,
         "draggable": props2.draggable
-      }, null, 8, ["src", "draggable"]) : createVNode("img", null, null), FIX_MODES[mode] ? createVNode(ResizeSensor, {
+      }, null, 8, ["src", "draggable"]) : createVNode("img", null, null), FIX_MODES[mode2] ? createVNode(ResizeSensor, {
         "onResize": fixSize
       }, null, 8, ["onResize"]) : createVNode("span", null, null)], 512);
     };
@@ -7257,9 +7275,9 @@ function fixNumber(num) {
 function useImageSize(rootRef, props2, state2) {
   const fixSize = () => {
     const {
-      mode
+      mode: mode2
     } = props2;
-    const names = FIX_MODES[mode];
+    const names = FIX_MODES[mode2];
     if (!names) {
       return;
     }
@@ -7374,7 +7392,7 @@ function useScopedAttrs() {
   };
 }
 function useFormField(nameKey, value) {
-  const uniForm = inject(uniFormKey, false);
+  const uniForm = inject(uniFormKey$1, false);
   if (!uniForm) {
     return;
   }
@@ -7755,6 +7773,23 @@ var Input = /* @__PURE__ */ defineComponent({
     };
   }
 });
+function flatVNode(nodes) {
+  const array = [];
+  if (Array.isArray(nodes)) {
+    nodes.forEach((vnode) => {
+      if (isVNode(vnode)) {
+        if (vnode.type === Fragment) {
+          array.push(...flatVNode(vnode.children));
+        } else {
+          array.push(vnode);
+        }
+      } else if (Array.isArray(vnode)) {
+        array.push(...flatVNode(vnode));
+      }
+    });
+  }
+  return array;
+}
 const props$l = {
   scaleArea: {
     type: Boolean,
@@ -7820,7 +7855,7 @@ var MovableArea = /* @__PURE__ */ defineComponent({
     provide("removeMovableViewContext", removeMovableViewContext);
     return () => {
       const defaultSlots = slots.default && slots.default();
-      movableViewItems = defaultSlots || [];
+      movableViewItems = flatVNode(defaultSlots);
       return createVNode("uni-movable-area", mergeProps({
         "ref": rootRef
       }, $attrs.value, $excludeAttrs.value, _listeners), [createVNode(ResizeSensor, {
@@ -8073,7 +8108,7 @@ function useTouchtrack(element, method, useCancel) {
 function e(e2, t2, n) {
   return e2 > t2 - n && e2 < t2 + n;
 }
-function t(t2, n) {
+function t$1(t2, n) {
   return e(t2, 0, n);
 }
 function Decline() {
@@ -8255,23 +8290,23 @@ Spring$2.prototype.setEnd = function(e2, n, i2) {
   if (!i2) {
     i2 = new Date().getTime();
   }
-  if (e2 !== this._endPosition || !t(n, 0.1)) {
+  if (e2 !== this._endPosition || !t$1(n, 0.1)) {
     n = n || 0;
     var r = this._endPosition;
     if (this._solution) {
-      if (t(n, 0.1)) {
+      if (t$1(n, 0.1)) {
         n = this._solution.dx((i2 - this._startTime) / 1e3);
       }
       r = this._solution.x((i2 - this._startTime) / 1e3);
-      if (t(n, 0.1)) {
+      if (t$1(n, 0.1)) {
         n = 0;
       }
-      if (t(r, 0.1)) {
+      if (t$1(r, 0.1)) {
         r = 0;
       }
       r += this._endPosition;
     }
-    if (!(this._solution && t(r - e2, 0.1) && t(n, 0.1))) {
+    if (!(this._solution && t$1(r - e2, 0.1) && t$1(n, 0.1))) {
       this._endPosition = e2;
       this._solution = this._solve(r - this._endPosition, n);
       this._startTime = i2;
@@ -8294,7 +8329,7 @@ Spring$2.prototype.done = function(n) {
   if (!n) {
     n = new Date().getTime();
   }
-  return e(this.x(), this._endPosition, 0.1) && t(this.dx(), 0.1);
+  return e(this.x(), this._endPosition, 0.1) && t$1(this.dx(), 0.1);
 };
 Spring$2.prototype.reconfigure = function(m, t2, c) {
   this._m = m;
@@ -9005,7 +9040,7 @@ function useMovableViewState(props2, trigger, rootRef) {
   };
 }
 const OPEN_TYPES = ["navigate", "redirect", "switchTab", "reLaunch", "navigateBack"];
-const _sfc_main$5 = {
+const _sfc_main$6 = {
   name: "Navigator",
   props: {
     hoverClass: {
@@ -9088,7 +9123,7 @@ const _sfc_main$5 = {
     };
   }
 };
-function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
   return $props.hoverClass && $props.hoverClass !== "none" ? (openBlock(), createBlock("uni-navigator", mergeProps({
     key: 0,
     class: [$setup.hovering ? $props.hoverClass : ""]
@@ -9103,7 +9138,7 @@ function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     renderSlot(_ctx.$slots, "default")
   ]));
 }
-_sfc_main$5.render = _sfc_render$5;
+_sfc_main$6.render = _sfc_render$6;
 const props$j = {
   value: {
     type: Array,
@@ -9149,7 +9184,7 @@ function useState$1(props2) {
   });
   return state2;
 }
-var index$f = /* @__PURE__ */ defineComponent({
+var PickerView = /* @__PURE__ */ defineComponent({
   name: "PickerView",
   props: props$j,
   emits: ["change", "pickstart", "pickend", "update:value"],
@@ -9890,23 +9925,6 @@ function useScroller(element, options) {
     handleTouchEnd
   };
 }
-function flatVNode(nodes) {
-  const array = [];
-  if (Array.isArray(nodes)) {
-    nodes.forEach((vnode) => {
-      if (isVNode(vnode)) {
-        if (vnode.type === Fragment) {
-          array.push(...flatVNode(vnode.children));
-        } else {
-          array.push(vnode);
-        }
-      } else if (Array.isArray(vnode)) {
-        array.push(...flatVNode(vnode));
-      }
-    });
-  }
-  return array;
-}
 let scopedIndex = 0;
 function useScopedClass(indicatorHeightRef) {
   const className = `uni-picker-view-content-${scopedIndex++}`;
@@ -9945,7 +9963,7 @@ function useCustomClick(dom) {
     }
   });
 }
-var index$e = /* @__PURE__ */ defineComponent({
+var PickerViewColumn = /* @__PURE__ */ defineComponent({
   name: "PickerViewColumn",
   setup(props2, {
     slots,
@@ -10236,27 +10254,27 @@ var index$c = /* @__PURE__ */ defineComponent({
   }
 });
 function useProvideRadioGroup(props2, trigger) {
-  const fields = [];
+  const fields2 = [];
   onMounted(() => {
-    _resetRadioGroupValue(fields.length - 1);
+    _resetRadioGroupValue(fields2.length - 1);
   });
-  const getFieldsValue = () => fields.find((field) => field.value.radioChecked)?.value.value;
+  const getFieldsValue = () => fields2.find((field) => field.value.radioChecked)?.value.value;
   provide(uniRadioGroupKey, {
     addField(field) {
-      fields.push(field);
+      fields2.push(field);
     },
     removeField(field) {
-      fields.splice(fields.indexOf(field), 1);
+      fields2.splice(fields2.indexOf(field), 1);
     },
     radioChange($event, field) {
-      const index2 = fields.indexOf(field);
+      const index2 = fields2.indexOf(field);
       _resetRadioGroupValue(index2, true);
       trigger("change", $event, {
         value: getFieldsValue()
       });
     }
   });
-  const uniForm = inject(uniFormKey, false);
+  const uniForm = inject(uniFormKey$1, false);
   if (uniForm) {
     uniForm.addField({
       submit: () => {
@@ -10276,25 +10294,25 @@ function useProvideRadioGroup(props2, trigger) {
     };
   }
   function _resetRadioGroupValue(key, change) {
-    fields.forEach((value, index2) => {
+    fields2.forEach((value, index2) => {
       if (index2 === key) {
         return;
       }
       if (change) {
-        setFieldChecked(fields[index2], false);
+        setFieldChecked(fields2[index2], false);
       } else {
-        fields.forEach((v2, i2) => {
+        fields2.forEach((v2, i2) => {
           if (index2 >= i2) {
             return;
           }
-          if (fields[i2].value.radioChecked) {
-            setFieldChecked(fields[index2], false);
+          if (fields2[i2].value.radioChecked) {
+            setFieldChecked(fields2[index2], false);
           }
         });
       }
     });
   }
-  return fields;
+  return fields2;
 }
 const props$g = {
   checked: {
@@ -10391,7 +10409,7 @@ function useRadioInject(radioChecked, radioValue, reset) {
   if (!!uniCheckGroup) {
     uniCheckGroup.addField(field);
   }
-  const uniForm = inject(uniFormKey, false);
+  const uniForm = inject(uniFormKey$1, false);
   if (!!uniForm) {
     uniForm.addField(formField);
   }
@@ -10614,7 +10632,7 @@ function parseNodes(nodes, parentNode) {
   });
   return parentNode;
 }
-const _sfc_main$4 = {
+const _sfc_main$5 = {
   name: "RichText",
   props: {
     nodes: {
@@ -10644,12 +10662,12 @@ const _sfc_main$4 = {
   }
 };
 const _hoisted_1$4 = /* @__PURE__ */ createVNode("div", null, null, -1);
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("uni-rich-text", _ctx.$attrs, [
     _hoisted_1$4
   ], 16);
 }
-_sfc_main$4.render = _sfc_render$4;
+_sfc_main$5.render = _sfc_render$5;
 function Friction(e2) {
   this._drag = e2;
   this._dragLog = Math.log(e2);
@@ -11322,7 +11340,7 @@ var scroller = {
   }
 };
 const passiveOptions = passive(true);
-const _sfc_main$3 = {
+const _sfc_main$4 = {
   name: "ScrollView",
   mixins: [scroller],
   props: {
@@ -11776,7 +11794,7 @@ const _hoisted_9 = /* @__PURE__ */ createVNode("circle", {
   style: {"color": "#2bd009"},
   "stroke-width": "3"
 }, null, -1);
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("uni-scroll-view", _hoisted_1$3, [
     createVNode("div", _hoisted_2$1, [
       createVNode("div", {
@@ -11824,7 +11842,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     ], 512)
   ], 512);
 }
-_sfc_main$3.render = _sfc_render$3;
+_sfc_main$4.render = _sfc_render$4;
 const props$f = {
   name: {
     type: String,
@@ -12007,7 +12025,7 @@ function useSliderLoader(props2, sliderValue, sliderRef, sliderValueRef, trigger
       });
     }
   };
-  const uniForm = inject(uniFormKey, false);
+  const uniForm = inject(uniFormKey$1, false);
   if (!!uniForm) {
     const field = {
       reset: () => sliderValue.value = Number(props2.min),
@@ -12772,7 +12790,7 @@ var index$9 = /* @__PURE__ */ defineComponent({
   }
 });
 function useSwitchInject(props2, switchChecked) {
-  const uniForm = inject(uniFormKey, false);
+  const uniForm = inject(uniFormKey$1, false);
   const uniLabel = inject(uniLabelKey, false);
   const formField = {
     submit: () => {
@@ -14851,7 +14869,7 @@ const getSystemInfoSync = /* @__PURE__ */ defineSyncApi("getSystemInfoSync", () 
   const windowWidth = getWindowWidth(screenWidth);
   let windowHeight = window.innerHeight;
   const language = navigator.language;
-  const statusBarHeight = out.top;
+  const statusBarHeight = D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.top;
   let osname;
   let osversion;
   let model;
@@ -14964,12 +14982,12 @@ const getSystemInfoSync = /* @__PURE__ */ defineSyncApi("getSystemInfoSync", () 
   const system = `${osname} ${osversion}`;
   const platform = osname.toLocaleLowerCase();
   const safeArea = {
-    left: out.left,
-    right: windowWidth - out.right,
-    top: out.top,
-    bottom: windowHeight - out.bottom,
-    width: windowWidth - out.left - out.right,
-    height: windowHeight - out.top - out.bottom
+    left: D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.left,
+    right: windowWidth - D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.right,
+    top: D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.top,
+    bottom: windowHeight - D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.bottom,
+    width: windowWidth - D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.left - D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.right,
+    height: windowHeight - D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.top - D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.bottom
   };
   const {top: windowTop, bottom: windowBottom} = getWindowOffset();
   windowHeight -= windowTop;
@@ -14989,10 +15007,10 @@ const getSystemInfoSync = /* @__PURE__ */ defineSyncApi("getSystemInfoSync", () 
     model,
     safeArea,
     safeAreaInsets: {
-      top: out.top,
-      right: out.right,
-      bottom: out.bottom,
-      left: out.left
+      top: D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.top,
+      right: D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.right,
+      bottom: D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.bottom,
+      left: D__DCloud_local_git_uniAppNext_node_modules_safeAreaInsets_out.left
     }
   };
 });
@@ -17400,7 +17418,7 @@ var index$3 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const _sfc_main$2 = {
+const _sfc_main$3 = {
   name: "CoverView",
   props: {
     scrollTop: {
@@ -17443,15 +17461,15 @@ const _hoisted_1$2 = {
   ref: "content",
   class: "uni-cover-view"
 };
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("uni-cover-view", {"scroll-top": $props.scrollTop}, [
     createVNode("div", _hoisted_1$2, [
       renderSlot(_ctx.$slots, "default")
     ], 512)
   ], 8, ["scroll-top"]);
 }
-_sfc_main$2.render = _sfc_render$2;
-const _sfc_main$1 = {
+_sfc_main$3.render = _sfc_render$3;
+const _sfc_main$2 = {
   name: "CoverImage",
   props: {
     src: {
@@ -17479,7 +17497,7 @@ const _sfc_main$1 = {
   }
 };
 const _hoisted_1$1 = {class: "uni-cover-image"};
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
   return openBlock(), createBlock("uni-cover-image", {
     ref: "root",
     src: $props.src
@@ -17493,6 +17511,802 @@ function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 40, ["src"])) : createCommentVNode("", true)
     ])
   ], 8, ["src"]);
+}
+_sfc_main$2.render = _sfc_render$2;
+function usePopupStyle(props2) {
+  const popupWidth = ref(0);
+  const popupHeight = ref(0);
+  const isDesktop = computed(() => popupWidth.value >= 500 && popupHeight.value >= 500);
+  const popupStyle = computed(() => {
+    const style = {content: {}, triangle: {}};
+    const contentStyle = style.content = {
+      transform: "",
+      left: "",
+      top: "",
+      bottom: ""
+    };
+    const triangleStyle = style.triangle = {
+      left: "",
+      top: "",
+      bottom: "",
+      "border-width": "",
+      "border-color": ""
+    };
+    const popover = props2.popover;
+    function getNumber(value) {
+      return Number(value) || 0;
+    }
+    if (isDesktop.value && popover) {
+      Object.assign(triangleStyle, {
+        position: "absolute",
+        width: "0",
+        height: "0",
+        "margin-left": "-6px",
+        "border-style": "solid"
+      });
+      const popoverLeft = getNumber(popover.left);
+      const popoverWidth = getNumber(popover.width);
+      const popoverTop = getNumber(popover.top);
+      const popoverHeight = getNumber(popover.height);
+      const center = popoverLeft + popoverWidth / 2;
+      contentStyle.transform = "none !important";
+      const contentLeft = Math.max(0, center - 300 / 2);
+      contentStyle.left = `${contentLeft}px`;
+      let triangleLeft = Math.max(12, center - contentLeft);
+      triangleLeft = Math.min(300 - 12, triangleLeft);
+      triangleStyle.left = `${triangleLeft}px`;
+      const vcl = popupHeight.value / 2;
+      if (popoverTop + popoverHeight - vcl > vcl - popoverTop) {
+        contentStyle.top = "auto";
+        contentStyle.bottom = `${popupHeight.value - popoverTop + 6}px`;
+        triangleStyle.bottom = "-6px";
+        triangleStyle["border-width"] = "6px 6px 0 6px";
+        triangleStyle["border-color"] = "#fcfcfd transparent transparent transparent";
+      } else {
+        contentStyle.top = `${popoverTop + popoverHeight + 6}px`;
+        triangleStyle.top = "-6px";
+        triangleStyle["border-width"] = "0 6px 6px 6px";
+        triangleStyle["border-color"] = "transparent transparent #fcfcfd transparent";
+      }
+    }
+    return style;
+  });
+  onMounted(() => {
+    const fixSize = () => {
+      const {windowWidth, windowHeight, windowTop} = uni.getSystemInfoSync();
+      popupWidth.value = windowWidth;
+      popupHeight.value = windowHeight + windowTop;
+    };
+    window.addEventListener("resize", fixSize);
+    fixSize();
+    onUnmounted(() => {
+      window.removeEventListener("resize", fixSize);
+    });
+  });
+  return {
+    isDesktop,
+    popupStyle
+  };
+}
+const {UniFormCtx, uniFormKey} = Form;
+const {t, getLocale} = useI18n();
+function getDefaultStartValue() {
+  if (this.mode === mode.TIME) {
+    return "00:00";
+  }
+  if (this.mode === mode.DATE) {
+    const year = new Date().getFullYear() - 100;
+    switch (this.fields) {
+      case fields.YEAR:
+        return year.toString();
+      case fields.MONTH:
+        return year + "-01";
+      default:
+        return year + "-01-01";
+    }
+  }
+  return "";
+}
+function getDefaultEndValue() {
+  if (this.mode === mode.TIME) {
+    return "23:59";
+  }
+  if (this.mode === mode.DATE) {
+    const year = new Date().getFullYear() + 100;
+    switch (this.fields) {
+      case fields.YEAR:
+        return year.toString();
+      case fields.MONTH:
+        return year + "-12";
+      default:
+        return year + "-12-31";
+    }
+  }
+  return "";
+}
+const mode = {
+  SELECTOR: "selector",
+  MULTISELECTOR: "multiSelector",
+  TIME: "time",
+  DATE: "date"
+};
+const fields = {
+  YEAR: "year",
+  MONTH: "month",
+  DAY: "day"
+};
+const selectorType = {
+  PICKER: "picker",
+  SELECT: "select"
+};
+var _sfc_main$1 = {
+  name: "Picker",
+  components: {PickerView, PickerViewColumn},
+  props: {
+    name: {
+      type: String,
+      default: ""
+    },
+    range: {
+      type: Array,
+      default() {
+        return [];
+      }
+    },
+    rangeKey: {
+      type: String,
+      default: ""
+    },
+    value: {
+      type: [Number, String, Array],
+      default: 0
+    },
+    mode: {
+      type: String,
+      default: mode.SELECTOR,
+      validator(val) {
+        return Object.values(mode).includes(val);
+      }
+    },
+    fields: {
+      type: String,
+      default: ""
+    },
+    start: {
+      type: String,
+      default: (props2) => {
+        return getDefaultStartValue.call(props2);
+      }
+    },
+    end: {
+      type: String,
+      default: (props2) => {
+        return getDefaultEndValue.call(props2);
+      }
+    },
+    disabled: {
+      type: [Boolean, String],
+      default: false
+    },
+    selectorType: {
+      type: String,
+      default: ""
+    }
+  },
+  data() {
+    return {
+      valueSync: null,
+      visible: false,
+      contentVisible: false,
+      popover: null,
+      valueChangeSource: "",
+      timeArray: [],
+      dateArray: [],
+      valueArray: [],
+      oldValueArray: [],
+      isDesktop: false,
+      popupStyle: {
+        content: {},
+        triangle: {}
+      }
+    };
+  },
+  computed: {
+    rangeArray() {
+      var val = this.range;
+      switch (this.mode) {
+        case mode.SELECTOR:
+          return [val];
+        case mode.MULTISELECTOR:
+          return val;
+        case mode.TIME:
+          return this.timeArray;
+        case mode.DATE: {
+          const dateArray = this.dateArray;
+          switch (this.fields) {
+            case fields.YEAR:
+              return [dateArray[0]];
+            case fields.MONTH:
+              return [dateArray[0], dateArray[1]];
+            default:
+              return [dateArray[0], dateArray[1], dateArray[2]];
+          }
+        }
+      }
+      return [];
+    },
+    startArray() {
+      return this._getDateValueArray(this.start, getDefaultStartValue.bind(this)());
+    },
+    endArray() {
+      return this._getDateValueArray(this.end, getDefaultEndValue.bind(this)());
+    },
+    selectorTypeComputed() {
+      const type = this.selectorType;
+      if (Object.values(selectorType).includes(type)) {
+        return type;
+      }
+      return String(navigator.vendor).indexOf("Apple") === 0 && navigator.maxTouchPoints > 0 ? selectorType.PICKER : selectorType.SELECT;
+    },
+    system() {
+      if (this.mode === mode.DATE && !Object.values(fields).includes(this.fields) && this.isDesktop && /win|mac/i.test(navigator.platform)) {
+        if (navigator.vendor === "Google Inc.") {
+          return "chrome";
+        } else if (/Firefox/.test(navigator.userAgent)) {
+          return "firefox";
+        }
+      }
+      return "";
+    }
+  },
+  watch: {
+    visible(val) {
+      if (val) {
+        clearTimeout(this.__contentVisibleDelay);
+        this.contentVisible = val;
+        this._select();
+      } else {
+        this.__contentVisibleDelay = setTimeout(() => {
+          this.contentVisible = val;
+        }, 300);
+      }
+    },
+    value() {
+      this._setValueSync();
+    },
+    mode() {
+      this._setValueSync();
+    },
+    range() {
+      this._setValueSync();
+    },
+    valueSync() {
+      this._setValueArray();
+    },
+    valueArray(val) {
+      if (this.mode === mode.TIME || this.mode === mode.DATE) {
+        const getValue = this.mode === mode.TIME ? this._getTimeValue : this._getDateValue;
+        const valueArray = this.valueArray;
+        const startArray = this.startArray;
+        const endArray = this.endArray;
+        if (this.mode === mode.DATE) {
+          const dateArray = this.dateArray;
+          const max = dateArray[2].length;
+          const day = Number(dateArray[2][valueArray[2]]) || 1;
+          const realDay = new Date(`${dateArray[0][valueArray[0]]}/${dateArray[1][valueArray[1]]}/${day}`).getDate();
+          if (realDay < day) {
+            valueArray[2] -= realDay + max - day;
+          }
+        }
+        if (getValue(valueArray) < getValue(startArray)) {
+          this._cloneArray(valueArray, startArray);
+        } else if (getValue(valueArray) > getValue(endArray)) {
+          this._cloneArray(valueArray, endArray);
+        }
+      }
+      val.forEach((value, column) => {
+        if (value !== this.oldValueArray[column]) {
+          this.oldValueArray[column] = value;
+          if (this.mode === mode.MULTISELECTOR) {
+            this.$trigger("columnchange", {}, {
+              column,
+              value
+            });
+          }
+        }
+      });
+    }
+  },
+  created() {
+    initI18nPickerMsgsOnce();
+    this._createTime();
+    this._createDate();
+    this._setValueSync();
+    usePickerWatch.call(this);
+    usePickerForm.call(this);
+    const popup = usePopupStyle(this);
+    this.isDesktop = popup.isDesktop;
+    this.popupStyle = popup.popupStyle;
+  },
+  mounted() {
+    this.$trigger = useCustomEvent({value: this.$refs.root}, this.$emit);
+  },
+  beforeUnmount() {
+    this.$refs.picker.remove();
+  },
+  methods: {
+    withWebEvent,
+    $$t: t,
+    _show(event) {
+      if (this.disabled) {
+        return;
+      }
+      this.valueChangeSource = "";
+      var $picker = this.$refs.picker;
+      $picker.remove();
+      (document.querySelector("uni-app") || document.body).appendChild($picker);
+      $picker.style.display = "block";
+      const rect = event.currentTarget.getBoundingClientRect();
+      this.popover = {
+        top: rect.top,
+        left: rect.left,
+        width: rect.width,
+        height: rect.height
+      };
+      setTimeout(() => {
+        this.visible = true;
+      }, 20);
+    },
+    _getFormData() {
+      return {
+        value: this.valueSync,
+        key: this.name
+      };
+    },
+    _resetFormData() {
+      switch (this.mode) {
+        case mode.SELECTOR:
+          this.valueSync = 0;
+          break;
+        case mode.MULTISELECTOR:
+          this.valueSync = this.value.map((val) => 0);
+          break;
+        case mode.DATE:
+        case mode.TIME:
+          this.valueSync = "";
+          break;
+      }
+    },
+    _createTime() {
+      var hours = [];
+      var minutes = [];
+      hours.splice(0, hours.length);
+      for (let i2 = 0; i2 < 24; i2++) {
+        hours.push((i2 < 10 ? "0" : "") + i2);
+      }
+      minutes.splice(0, minutes.length);
+      for (let i2 = 0; i2 < 60; i2++) {
+        minutes.push((i2 < 10 ? "0" : "") + i2);
+      }
+      this.timeArray.push(hours, minutes);
+    },
+    _createDate() {
+      var years = [];
+      var year = new Date().getFullYear();
+      for (let i2 = year - 150, end = year + 150; i2 <= end; i2++) {
+        years.push(String(i2));
+      }
+      var months = [];
+      for (let i2 = 1; i2 <= 12; i2++) {
+        months.push((i2 < 10 ? "0" : "") + i2);
+      }
+      var days = [];
+      for (let i2 = 1; i2 <= 31; i2++) {
+        days.push((i2 < 10 ? "0" : "") + i2);
+      }
+      this.dateArray.push(years, months, days);
+    },
+    _getTimeValue(val) {
+      return val[0] * 60 + val[1];
+    },
+    _getDateValue(val) {
+      const DAY = 31;
+      return val[0] * DAY * 12 + (val[1] || 0) * DAY + (val[2] || 0);
+    },
+    _cloneArray(val1, val2) {
+      for (let i2 = 0; i2 < val1.length && i2 < val2.length; i2++) {
+        val1[i2] = val2[i2];
+      }
+    },
+    _setValueSync() {
+      let val = this.value;
+      switch (this.mode) {
+        case mode.MULTISELECTOR:
+          {
+            if (!Array.isArray(val)) {
+              val = [];
+            }
+            if (!Array.isArray(this.valueSync)) {
+              this.valueSync = [];
+            }
+            const length = this.valueSync.length = Math.max(val.length, this.range.length);
+            for (let index2 = 0; index2 < length; index2++) {
+              const val0 = Number(val[index2]);
+              const val1 = Number(this.valueSync[index2]);
+              const val2 = isNaN(val0) ? isNaN(val1) ? 0 : val1 : val0;
+              const maxVal = this.range[index2] ? this.range[index2].length - 1 : 0;
+              this.valueSync.splice(index2, 1, val2 < 0 || val2 > maxVal ? 0 : val2);
+            }
+          }
+          break;
+        case mode.TIME:
+        case mode.DATE:
+          this.valueSync = String(val);
+          break;
+        default: {
+          const valueSync = Number(val);
+          this.valueSync = valueSync < 0 ? 0 : valueSync;
+          break;
+        }
+      }
+    },
+    _setValueArray() {
+      var val = this.valueSync;
+      var valueArray;
+      switch (this.mode) {
+        case mode.MULTISELECTOR:
+          valueArray = [...val];
+          break;
+        case mode.TIME:
+          valueArray = this._getDateValueArray(val, formatDateTime({
+            mode: mode.TIME
+          }));
+          break;
+        case mode.DATE:
+          valueArray = this._getDateValueArray(val, formatDateTime({
+            mode: mode.DATE
+          }));
+          break;
+        default:
+          valueArray = [val];
+          break;
+      }
+      this.oldValueArray = [...valueArray];
+      this.valueArray = [...valueArray];
+    },
+    _getValue() {
+      var val = this.valueArray;
+      switch (this.mode) {
+        case mode.SELECTOR:
+          return val[0];
+        case mode.MULTISELECTOR:
+          return val.map((val2) => val2);
+        case mode.TIME:
+          return this.valueArray.map((val2, i2) => this.timeArray[i2][val2]).join(":");
+        case mode.DATE:
+          return this.valueArray.map((val2, i2) => this.dateArray[i2][val2]).join("-");
+      }
+    },
+    _getDateValueArray(valueStr, defaultValue) {
+      const splitStr = this.mode === mode.DATE ? "-" : ":";
+      const array = this.mode === mode.DATE ? this.dateArray : this.timeArray;
+      let max;
+      if (this.mode === mode.TIME) {
+        max = 2;
+      } else {
+        switch (this.fields) {
+          case fields.YEAR:
+            max = 1;
+            break;
+          case fields.MONTH:
+            max = 2;
+            break;
+          default:
+            max = 3;
+            break;
+        }
+      }
+      const inputArray = String(valueStr).split(splitStr);
+      let value = [];
+      for (let i2 = 0; i2 < max; i2++) {
+        const val = inputArray[i2];
+        value.push(array[i2].indexOf(val));
+      }
+      if (value.indexOf(-1) >= 0) {
+        value = defaultValue ? this._getDateValueArray(defaultValue) : value.map(() => 0);
+      }
+      return value;
+    },
+    _change() {
+      this._close();
+      this.valueChangeSource = "click";
+      const value = this._getValue();
+      this.valueSync = Array.isArray(value) ? value.map((val) => val) : value;
+      this.$trigger("change", {}, {
+        value
+      });
+    },
+    _cancel($event) {
+      if (this.system === "firefox") {
+        const {top, left, width, height} = this.popover;
+        const {pageX, pageY} = $event;
+        if (pageX > left && pageX < left + width && pageY > top && pageY < top + height) {
+          return;
+        }
+      }
+      this._close();
+      this.$trigger("cancel", {}, {});
+    },
+    _close() {
+      this.visible = false;
+      setTimeout(() => {
+        var $picker = this.$refs.picker;
+        $picker.remove();
+        this.$el.prepend($picker);
+        $picker.style.display = "none";
+      }, 260);
+    },
+    _select() {
+      if (this.mode === mode.SELECTOR && this.selectorTypeComputed === selectorType.SELECT) {
+        this.$refs.select.scrollTop = this.valueArray[0] * 34;
+      }
+    },
+    _input($event) {
+      this.valueSync = $event.target.value;
+      this.$nextTick(() => {
+        this._change();
+      });
+    },
+    _fixInputPosition($event) {
+      if (this.system === "chrome") {
+        const rect = this.$el.getBoundingClientRect();
+        const style = this.$refs.input.style;
+        const fontSize = 32;
+        style.left = `${$event.clientX - rect.left - fontSize * 1.5}px`;
+        style.top = `${$event.clientY - rect.top - fontSize * 0.5}px`;
+      }
+    },
+    _pickerViewChange(event) {
+      this.valueArray = this._l10nColumn(event.detail.value, true);
+    },
+    _l10nColumn(array, normalize) {
+      if (this.mode === mode.DATE) {
+        const locale = getLocale();
+        if (!locale.startsWith("zh")) {
+          switch (this.fields) {
+            case fields.YEAR:
+              return array;
+            case fields.MONTH:
+              return [array[1], array[0]];
+            default:
+              switch (locale) {
+                case "es":
+                case "fr":
+                  return [array[2], array[1], array[0]];
+                default:
+                  return normalize ? [array[2], array[0], array[1]] : [array[1], array[2], array[0]];
+              }
+          }
+        }
+      }
+      return array;
+    },
+    _l10nItem(item, index2) {
+      if (this.mode === mode.DATE) {
+        const locale = getLocale();
+        if (locale.startsWith("zh")) {
+          const array = ["\u5E74", "\u6708", "\u65E5"];
+          return item + array[index2];
+        } else if (this.fields !== fields.YEAR && index2 === (this.fields !== fields.MONTH && (locale === "es" || locale === "fr") ? 1 : 0)) {
+          let array;
+          switch (locale) {
+            case "es":
+              array = [
+                "enero",
+                "febrero",
+                "marzo",
+                "abril",
+                "mayo",
+                "junio",
+                "\u200B\u200Bjulio",
+                "agosto",
+                "septiembre",
+                "octubre",
+                "noviembre",
+                "diciembre"
+              ];
+              break;
+            case "fr":
+              array = [
+                "janvier",
+                "f\xE9vrier",
+                "mars",
+                "avril",
+                "mai",
+                "juin",
+                "juillet",
+                "ao\xFBt",
+                "septembre",
+                "octobre",
+                "novembre",
+                "d\xE9cembre"
+              ];
+              break;
+            default:
+              array = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+              ];
+              break;
+          }
+          return array[Number(item) - 1];
+        }
+      }
+      return item;
+    }
+  },
+  setup(props2) {
+    const booleanAttrs = useBooleanAttr(props2, "disabled");
+    return {
+      booleanAttrs
+    };
+  }
+};
+function usePickerWatch() {
+  const {key, disable} = useKeyboard();
+  watch(() => this.visible, (value) => disable.value = !value);
+  watchEffect(() => {
+    const {value} = key;
+    if (value === "esc") {
+      this._cancel && this._cancel();
+    } else if (value === "enter") {
+      this._change && this._change();
+    }
+  });
+}
+function usePickerForm() {
+  const uniForm = inject(uniFormKey, false);
+  if (!!uniForm) {
+    const field = {
+      reset: this._resetFormData,
+      submit: () => {
+        const data = ["", null];
+        const {key, value} = this._getFormData();
+        if (key !== "") {
+          data[0] = key;
+          data[1] = value;
+        }
+        return data;
+      }
+    };
+    uniForm.addField(field);
+    onBeforeUnmount(() => {
+      uniForm.removeField(field);
+    });
+  }
+}
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_PickerViewColumn = resolveComponent("PickerViewColumn");
+  const _component_PickerView = resolveComponent("PickerView");
+  return openBlock(), createBlock("uni-picker", mergeProps({ref: "root"}, $setup.booleanAttrs, {
+    onClick: _cache[13] || (_cache[13] = (() => $options.withWebEvent($options._show))())
+  }), [
+    createVNode("div", {
+      ref: "picker",
+      class: ["uni-picker-container", `uni-${$props.mode}-${$options.selectorTypeComputed}`],
+      onWheel: _cache[9] || (_cache[9] = withModifiers(() => {
+      }, ["prevent"])),
+      onTouchmove: _cache[10] || (_cache[10] = withModifiers(() => {
+      }, ["prevent"]))
+    }, [
+      createVNode(Transition, {name: "uni-fade"}, {
+        default: withCtx(() => [
+          withDirectives(createVNode("div", {
+            class: "uni-mask uni-picker-mask",
+            onClick: _cache[1] || (_cache[1] = (() => $options.withWebEvent($options._cancel))()),
+            onMousemove: _cache[2] || (_cache[2] = (...args) => $options._fixInputPosition && $options._fixInputPosition(...args))
+          }, null, 544), [
+            [vShow, $data.visible]
+          ])
+        ]),
+        _: 1
+      }),
+      !$options.system ? (openBlock(), createBlock("div", {
+        key: 0,
+        class: [{"uni-picker-toggle": $data.visible}, "uni-picker-custom"],
+        style: $data.popupStyle.content
+      }, [
+        createVNode("div", {
+          class: "uni-picker-header",
+          onClick: _cache[5] || (_cache[5] = withModifiers(() => {
+          }, ["stop"]))
+        }, [
+          createVNode("div", {
+            class: "uni-picker-action uni-picker-action-cancel",
+            onClick: _cache[3] || (_cache[3] = (() => $options.withWebEvent($options._cancel))())
+          }, toDisplayString($options.$$t("uni.picker.cancel")), 1),
+          createVNode("div", {
+            class: "uni-picker-action uni-picker-action-confirm",
+            onClick: _cache[4] || (_cache[4] = (...args) => $options._change && $options._change(...args))
+          }, toDisplayString($options.$$t("uni.picker.done")), 1)
+        ]),
+        $data.contentVisible ? (openBlock(), createBlock(_component_PickerView, {
+          key: 0,
+          value: $options._l10nColumn($data.valueArray),
+          class: "uni-picker-content",
+          onChange: _cache[6] || (_cache[6] = (() => $options.withWebEvent($options._pickerViewChange))())
+        }, {
+          default: withCtx(() => [
+            (openBlock(true), createBlock(Fragment, null, renderList($options._l10nColumn($options.rangeArray), (rangeItem, index0) => {
+              return openBlock(), createBlock(_component_PickerViewColumn, {key: index0}, {
+                default: withCtx(() => [
+                  (openBlock(true), createBlock(Fragment, null, renderList(rangeItem, (item, index2) => {
+                    return openBlock(), createBlock("div", {
+                      key: index2,
+                      class: "uni-picker-item"
+                    }, toDisplayString(typeof item === "object" ? item[$props.rangeKey] || "" : $options._l10nItem(item, index0)), 1);
+                  }), 128))
+                ]),
+                _: 2
+              }, 1024);
+            }), 128))
+          ]),
+          _: 1
+        }, 8, ["value"])) : createCommentVNode("", true),
+        createVNode("div", {
+          ref: "select",
+          class: "uni-picker-select",
+          onWheel: _cache[7] || (_cache[7] = withModifiers(() => {
+          }, ["stop"])),
+          onTouchmove: _cache[8] || (_cache[8] = withModifiers(() => {
+          }, ["stop"]))
+        }, [
+          (openBlock(true), createBlock(Fragment, null, renderList($options.rangeArray[0], (item, index2) => {
+            return openBlock(), createBlock("div", {
+              key: index2,
+              class: ["uni-picker-item", {selected: $data.valueArray[0] === index2}],
+              onClick: ($event) => {
+                $data.valueArray[0] = index2;
+                $options._change();
+              }
+            }, toDisplayString(typeof item === "object" ? item[$props.rangeKey] || "" : item), 11, ["onClick"]);
+          }), 128))
+        ], 544),
+        createVNode("div", {
+          style: $data.popupStyle.triangle
+        }, null, 4)
+      ], 6)) : createCommentVNode("", true)
+    ], 34),
+    createVNode("div", null, [
+      renderSlot(_ctx.$slots, "default")
+    ]),
+    $options.system ? (openBlock(), createBlock("div", {
+      key: 0,
+      class: "uni-picker-system",
+      onMousemove: _cache[12] || (_cache[12] = (() => $options.withWebEvent($options._fixInputPosition))())
+    }, [
+      createVNode("input", {
+        ref: "input",
+        value: $data.valueSync,
+        type: $props.mode,
+        tabindex: "-1",
+        min: $props.start,
+        max: $props.end,
+        class: [$options.system, $data.popupStyle.dock],
+        onChange: _cache[11] || (_cache[11] = withModifiers((() => $options.withWebEvent($options._input))(), ["stop"]))
+      }, null, 42, ["value", "type", "min", "max"])
+    ], 32)) : createCommentVNode("", true)
+  ], 16);
 }
 _sfc_main$1.render = _sfc_render$1;
 const UniViewJSBridge$1 = /* @__PURE__ */ extend(ViewJSBridge, {
@@ -18608,4 +19422,4 @@ var index = /* @__PURE__ */ defineComponent({
     return openBlock(), createBlock("div", clazz, [loadingVNode]);
   }
 });
-export {index$1 as AsyncErrorComponent, index as AsyncLoadingComponent, _sfc_main$7 as Audio, index$m as Button, _sfc_main$6 as Canvas, index$j as Checkbox, index$l as CheckboxGroup, _sfc_main$1 as CoverImage, _sfc_main$2 as CoverView, index$i as Editor, index$n as Form, index$h as Icon, index$g as Image, Input, index$k as Label, LayoutComponent, index$3 as Map, MovableArea, MovableView, _sfc_main$5 as Navigator, index$2 as PageComponent, index$f as PickerView, index$e as PickerViewColumn, index$d as Progress, index$b as Radio, index$c as RadioGroup, ResizeSensor, _sfc_main$4 as RichText, _sfc_main$3 as ScrollView, index$a as Slider, Swiper, SwiperItem, index$9 as Switch, index$8 as Text, index$7 as Textarea, UniServiceJSBridge$1 as UniServiceJSBridge, UniViewJSBridge$1 as UniViewJSBridge, index$5 as Video, index$6 as View, index$4 as WebView, addInterceptor, arrayBufferToBase64, base64ToArrayBuffer, canIUse, canvasGetImageData, canvasPutImageData, canvasToTempFilePath, chooseFile, chooseImage, chooseVideo, clearStorage, clearStorageSync, closeSocket, connectSocket, createCanvasContext, createInnerAudioContext, createIntersectionObserver, createMapContext, createSelectorQuery, createVideoContext, cssBackdropFilter, cssConstant, cssEnv, cssVar, downloadFile, getApp$1 as getApp, getCurrentPages$1 as getCurrentPages, getFileInfo, getImageInfo, getLocation, getNetworkType, getStorage, getStorageInfo, getStorageInfoSync, getStorageSync, getSystemInfo, getSystemInfoSync, getVideoInfo, hideKeyboard, hideLoading, hideNavigationBarLoading, hideTabBar, hideTabBarRedDot, hideToast, loadFontFace, makePhoneCall, navigateBack, navigateTo, offAccelerometerChange, offCompassChange, offNetworkStatusChange, onAccelerometerChange, onCompassChange, onNetworkStatusChange, onSocketClose, onSocketError, onSocketMessage, onSocketOpen, onTabBarMidButtonTap, openDocument, pageScrollTo, index$o as plugin, previewImage, promiseInterceptor, reLaunch, redirectTo, removeInterceptor, removeStorage, removeStorageSync, removeTabBarBadge, request, sendSocketMessage, setNavigationBarColor, setNavigationBarTitle, setStorage, setStorageSync, setTabBarBadge, setTabBarItem, setTabBarStyle, setupApp, setupPage, showLoading, showModal, showNavigationBarLoading, showTabBar, showTabBarRedDot, showToast, startAccelerometer, startCompass, startPullDownRefresh, stopAccelerometer, stopCompass, stopPullDownRefresh, switchTab, uni$1 as uni, uploadFile, upx2px, useAttrs, useCustomEvent, useNativeEvent, useOn, useSubscribe, useUserAction, vibrateLong, vibrateShort, withWebEvent};
+export {index$1 as AsyncErrorComponent, index as AsyncLoadingComponent, _sfc_main$8 as Audio, index$k as Button, _sfc_main$7 as Canvas, index$h as Checkbox, index$j as CheckboxGroup, _sfc_main$2 as CoverImage, _sfc_main$3 as CoverView, index$g as Editor, Form, index$f as Icon, index$e as Image, Input, index$i as Label, LayoutComponent, index$3 as Map, MovableArea, MovableView, _sfc_main$6 as Navigator, index$2 as PageComponent, _sfc_main$1 as Picker, PickerView, PickerViewColumn, index$d as Progress, index$b as Radio, index$c as RadioGroup, ResizeSensor, _sfc_main$5 as RichText, _sfc_main$4 as ScrollView, index$a as Slider, Swiper, SwiperItem, index$9 as Switch, index$8 as Text, index$7 as Textarea, UniServiceJSBridge$1 as UniServiceJSBridge, UniViewJSBridge$1 as UniViewJSBridge, index$5 as Video, index$6 as View, index$4 as WebView, addInterceptor, arrayBufferToBase64, base64ToArrayBuffer, canIUse, canvasGetImageData, canvasPutImageData, canvasToTempFilePath, chooseFile, chooseImage, chooseVideo, clearStorage, clearStorageSync, closeSocket, connectSocket, createCanvasContext, createInnerAudioContext, createIntersectionObserver, createMapContext, createSelectorQuery, createVideoContext, cssBackdropFilter, cssConstant, cssEnv, cssVar, downloadFile, getApp$1 as getApp, getCurrentPages$1 as getCurrentPages, getFileInfo, getImageInfo, getLocation, getNetworkType, getStorage, getStorageInfo, getStorageInfoSync, getStorageSync, getSystemInfo, getSystemInfoSync, getVideoInfo, hideKeyboard, hideLoading, hideNavigationBarLoading, hideTabBar, hideTabBarRedDot, hideToast, loadFontFace, makePhoneCall, navigateBack, navigateTo, offAccelerometerChange, offCompassChange, offNetworkStatusChange, onAccelerometerChange, onCompassChange, onNetworkStatusChange, onSocketClose, onSocketError, onSocketMessage, onSocketOpen, onTabBarMidButtonTap, openDocument, pageScrollTo, index$l as plugin, previewImage, promiseInterceptor, reLaunch, redirectTo, removeInterceptor, removeStorage, removeStorageSync, removeTabBarBadge, request, sendSocketMessage, setNavigationBarColor, setNavigationBarTitle, setStorage, setStorageSync, setTabBarBadge, setTabBarItem, setTabBarStyle, setupApp, setupPage, showLoading, showModal, showNavigationBarLoading, showTabBar, showTabBarRedDot, showToast, startAccelerometer, startCompass, startPullDownRefresh, stopAccelerometer, stopCompass, stopPullDownRefresh, switchTab, uni$1 as uni, uploadFile, upx2px, useAttrs, useBooleanAttr, useCustomEvent, useNativeEvent, useOn, useSubscribe, useUserAction, vibrateLong, vibrateShort, withWebEvent};
